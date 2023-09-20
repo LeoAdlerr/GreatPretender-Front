@@ -8,3 +8,13 @@ import TheWelcome from '../components/TheWelcome.vue'
   </main>
 
 </template>
+
+<!-- <style>
+body {
+  color: rgb(0, 0, 0);
+}
+
+template {
+  color: rgb(0, 0, 0);
+}
+</style> -->
