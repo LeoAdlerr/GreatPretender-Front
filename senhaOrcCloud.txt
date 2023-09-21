@@ -14,3 +14,5 @@ Oracle-Tags
 CreatedOn
 : 
 2023-09-13T01:28:07.168Z
+
+senha wallet: Fatec123
