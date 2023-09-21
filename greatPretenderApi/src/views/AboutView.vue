@@ -11,16 +11,55 @@
   <label for="checkbox">Checked: {{ checked }}</label>
  -->
   <!-- <h2>Multi Checkbox</h2> -->
-  <input type="checkbox" id="jack" value="inspeção de solo" v-model="checkedNames">
-  <label for="jack">Inspeção de solo</label>
-  <input type="checkbox" id="john" value="Materiais de limpeza" v-model="checkedNames">
-  <label for="john">Materiais de limpeza</label>
-  <input type="checkbox" id="mike" value="Epi's" v-model="checkedNames">
-  <label for="mike">EPI's</label>
-  <p>Serviços Selecionados: <pre>{{ checkedNames }}</pre></p>
+  <div>
+    <h2>Nome Cliente</h2>
+    <input v-model="text">
+  </div>
 
-  <h2>Nome cliente</h2>
-  <input v-model="text"> {{ text }}
+  <div id="servicos">
+    <Label>Serviços</Label>
+    <br>
+    <input type="checkbox" id="11" value="inspeção de solo" v-model="checkedServicos">
+    <label for="11">Inspeção de solo</label>
+    <input type="checkbox" id="12" value="Vistoria de Gramado" v-model="checkedServicos">
+    <label for="12">Vistoria de Gramado</label>
+    <input type="checkbox" id="13" value="Epi's" v-model="checkedServicos">
+    <label for="13">EPI's</label>
+    <!-- <p>Serviços Selecionados: <pre>{{ checkedServicos }}</pre></p> -->
+  </div>
+
+  <br>
+
+  <div id="ferramentas">
+    <Label>Ferramentas</Label>
+    <br>
+    <input type="checkbox" id="1" value="Espanador" v-model="checkedFerramentas">
+    <label for="1">Espanador</label>
+    <input type="checkbox" id="2" value="Materiais de limpeza" v-model="checkedFerramentas">
+    <label for="2">Materiais de limpeza</label>
+    <input type="checkbox" id="3" value="Epi's" v-model="checkedFerramentas">
+    <label for="3">EPI's</label>
+    <!-- <p>Ferramentas Selecionadas: <pre>{{ checkedFerramentas }}</pre></p> -->
+  </div>
+
+  <div id="tabelaLaudo">
+    
+      <label id="cliente" for=""></label>
+    <table>
+      <thead>
+          <tr>
+              <th>Serviços</th>
+              <th>Ferramentas</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td id="servicoTable">|||{{ checkedServicos }}</td>
+              <td id="ferramentaTable">|||{{ checkedFerramentas }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
 </template>
 
@@ -42,9 +81,13 @@ import { ref } from 'vue'
 
 const text = ref('Edit me')
 /* const checked = ref(true) */
-const checkedNames = ref(['Jack'])
+const checkedServicos = ref([])
+const checkedFerramentas = ref([])
+document.getElementById('cliente').querySelector<HTMLInputElement>('.cliente').value=text; 
+
 /* const picked = ref('One')
 const selected = ref('A')
 const multiSelected = ref(['A']) */
 </script> 
 
+<script ></script>
