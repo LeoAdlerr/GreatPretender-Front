@@ -13,12 +13,14 @@
   <!-- <h2>Multi Checkbox</h2> -->
   <div>
     <h2>Nome Cliente</h2>
-    <input v-model="text">
+    <input id="text" v-model="text">
   </div>
 
   <div id="servicos">
     <Label>Serviços</Label>
     <br>
+    <list name="jorge" id="jorge"></list>
+    <option value="mau="></option>
     <input type="checkbox" id="11" value="inspeção de solo" v-model="checkedServicos">
     <label for="11">Inspeção de solo</label>
     <input type="checkbox" id="12" value="Vistoria de Gramado" v-model="checkedServicos">
@@ -44,21 +46,22 @@
 
   <div id="tabelaLaudo">
     
-      <label id="cliente" for=""></label>
-    <table>
-      <thead>
-          <tr>
-              <th>Serviços</th>
-              <th>Ferramentas</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td id="servicoTable">|||{{ checkedServicos }}</td>
-              <td id="ferramentaTable">|||{{ checkedFerramentas }}</td>
-          </tr>
-      </tbody>
-  </table>
+    <label id="cliente" for=""></label>
+  <table>
+    <thead>
+      {{ text }}
+        <tr>
+            <th>Serviços</th>
+            <th>Ferramentas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="servicoTable">|||{{ checkedServicos }}</td>
+            <td id="ferramentaTable">|||{{ checkedFerramentas }}</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 
 </template>
@@ -83,11 +86,9 @@ const text = ref('Edit me')
 /* const checked = ref(true) */
 const checkedServicos = ref([])
 const checkedFerramentas = ref([])
-document.getElementById('cliente').querySelector<HTMLInputElement>('.cliente').value=text; 
+
 
 /* const picked = ref('One')
 const selected = ref('A')
 const multiSelected = ref(['A']) */
 </script> 
-
-<script ></script>
