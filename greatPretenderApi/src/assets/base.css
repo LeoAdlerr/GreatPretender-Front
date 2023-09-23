@@ -85,19 +85,15 @@ body {
 } 
  */
 
-
- body{
+body {
   color: #2f00ff;
-min-height: 80%;   
-margin: 1%;
+  min-height: 80%;
+  margin: 1%;
 
-align-items: left;
-font-weight: normal;
-background-color: rgba(231, 231, 231, 0.9);
-
+  align-items: left;
+  font-weight: normal;
+  background-color: rgba(231, 231, 231, 0.9);
 }
-
-
 
 /*laudo/about*/
 #app {
@@ -109,5 +105,4 @@ background-color: rgba(231, 231, 231, 0.9);
   font-weight: normal;
   border-radius: 15px;
   background-color: rgb(246, 246, 247);
-  
 }

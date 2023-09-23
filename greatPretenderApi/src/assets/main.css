@@ -8,8 +8,6 @@ a,
   text-shadow: 0.2px 0.2px #000000;
 }
 
-
-
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
@@ -19,24 +17,23 @@ a,
 @media (min-width: 50%) {
   body {
     color: #ff4d00;
-  min-height: 80%;   
-  margin: 10%;
-  padding: 2rem;
-  align-items: left;
-  font-weight: normal;
-  background-color: rgba(255, 0, 0, 0.5);
-
+    min-height: 80%;
+    margin: 10%;
+    padding: 2rem;
+    align-items: left;
+    font-weight: normal;
+    background-color: rgba(255, 0, 0, 0.5);
   }
-.laudo{
-  color: rgb(255, 0, 191);
-}
-   #app {
+  .laudo {
+    color: rgb(255, 0, 191);
+  }
+  #app {
     display: grid;
     min-width: 80%;
     min-height: 80%;
     grid-template-columns: 1fr 1fr;
-    
+
     background-color: rgba(255, 0, 0, 0.5);
-  color: #00ff51;
-  } 
+    color: #00ff51;
+  }
 }
