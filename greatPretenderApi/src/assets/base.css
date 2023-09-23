@@ -98,6 +98,7 @@ body {
 /*laudo/about*/
 #app {
   color: rgb(255, 213, 0);
+  text-shadow: 0.2px 0.2px #000000;
   min-width: 80%;
   margin: 1%;
   padding: 2rem;

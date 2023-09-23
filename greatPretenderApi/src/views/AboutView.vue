@@ -10,7 +10,7 @@
   <label for="checkbox">Checked: {{ checked }}</label>
  -->
   <!-- <h2>Multi Checkbox</h2> -->
-  
+
   <div>
     <h2>Nome Cliente</h2>
     <input id="text" v-model="text" />
@@ -68,11 +68,9 @@
   </div>
 
   <div id="btns">
-  <button id="addLaudo" @click="addLaudo">Adicionar Laudo</button>
-</div>
+    <button id="addLaudo" @click="buscarServico">Adicionar Laudo</button>
+  </div>
 </template>
-
-
 
 <style>
 .laudo {
@@ -87,37 +85,93 @@
 }
 </style>
 
-
 <script setup>
+import { onMounted } from 'vue';
+import axios from 'axios';
 import { ref } from 'vue'
 
 const text = ref('Edit me')
 const checkedServicos = ref([])
 const checkedFerramentas = ref([])
+const servicoss = ref()
 
 const checkboxValue = ref(false) // Initialize with a default value (unchecked)
 
-const checkboxRef = ref<HTMLInputElement | null>(null)
+const checkboxRef = (ref < HTMLInputElement) | (null > null)
 
 // Function to get the checkbox value
 const getCheckboxValue = () => {
   return checkboxValue.value
-} 
+}
 
 function criarLaudo() {
-  var laudo = {"ferramentas" : checkedFerramentas.value, "serviços" : checkedServicos.value, "cliente" : text.value};
-  return laudo;
+  var laudo = {
+    ferramentas: checkedFerramentas.value,
+    serviços: checkedServicos.value,
+    cliente: text.value
+  }
+  return laudo
 }
-var arrayLaudos = [];
+var arrayLaudos = []
 
 const addLaudo = () => {
-  arrayLaudos.push(criarLaudo());
+  arrayLaudos.push(criarLaudo())
 
-    arrayLaudos.forEach(element => {
-    console.log(element);
-  });
+  arrayLaudos.forEach((element) => {
+    console.log(element)
+  })
 }
+
+async function buscarServico() {
+    //erro.value = "";
+    /* try { */
+      servicoss.value = (await axios.get("https://jsonplaceholder.typicode.com/todos/1")).data;
+      console.log(servicoss);
+    /* }
+    catch(error) {
+      erro.value = (error as Error).message;
+    }  */
+  }
+
 </script>
 
 
 
+<!-- 
+
+import { onMounted, ref } from 'vue';
+  import axios from 'axios';
+
+  const nome = ref("Teste");
+  const senha = ref("123");
+  const erro = ref();
+  const usuarios = ref();
+
+  async function buscarUsuarios() {
+    erro.value = "";
+    try {
+      usuarios.value = (await axios.get("usuario")).data;
+    }
+    catch(error) {
+      erro.value = (error as Error).message;
+    }
+  }
+
+  async function salvarUsuario() {
+    erro.value = "";
+    try {
+      usuarios.value.push((await axios.post("usuario", 
+          {
+            nome: nome.value,
+            senha: senha.value
+          }
+        )).data);
+    }
+    catch(error) {
+      erro.value = (error as Error).message;
+    }
+  }
+
+  onMounted(() => {
+    buscarUsuarios();
+  }); -->
