@@ -1,29 +1,17 @@
-<<<<<<< Updated upstream
+
 <template class="laudo">
   <div class="itensLaudo">
-=======
-<!-- eslint-disable vue/no-export-in-script-setup -->
-<template id="laudo">
 
-
-
-  <div id="itensLaudo">
->>>>>>> Stashed changes
     <label for="selecionaServico">Serviços:</label>
     <input class="selecionaServico" list="listaServico" type="text" v-model="selectedServico" />
-    <datalist name="listaServico" id="listaServico">
-      <option v-for="servico in servicoss" :key="servico.id">{{ servico.nome }}</option>
-    </datalist>
-    <label for="selecionaFerramenta">Ferramentas:</label>
-    <input
-      id="selecionaFerramenta"
-      list="listaFerramenta"
-      type="text"
-      v-model="selectedFerramenta"
-    />
-    <datalist name="listaFerramenta" id="listaFerramenta">
-      <option v-for="ferramenta in ferramentass" :key="ferramenta.id">{{ ferramenta.nome }}</option>
-    </datalist>
+      <datalist name="listaServico" id="listaServico">
+        <option v-for="servico in servicoss" :key="servico.id">{{ servico.nome }}</option>
+      </datalist>
+    <label for="usuario">Usuario:</label>
+    <input id="inputUsuario" list="listaUsuario" type="text" v-model="selectedUsuario"/>
+      <datalist name="listaUsuario" id="listaUsuario">
+        <option v-for="usuario in usuarioss" :key="usuario.id">{{ usuario.nome }}</option>
+      </datalist>
   </div>
 
   <br /><br />
@@ -31,9 +19,7 @@
   <div>
     <button id="addServico" @click="addServico(selectedServico)">Adicionar Servico</button>
 
-    <button id="addFerramenta" @click="addFerramenta(selectedFerramenta)">
-      Adicionar Ferramenta
-    </button>
+    <button id="addUsuario" @click="addUsuario(selectedUsuario)">Adicionar Usuario </button>
   </div>
 
   <br /><br />
@@ -45,7 +31,7 @@
         <tr>
           <th>Serviços</th>
           ||
-          <th>Ferramentas</th>
+          <th>Usuario</th>
         </tr>
       </thead>
 
@@ -53,7 +39,7 @@
         <tr>
           <td id="servicoTable">{{ checkedServicos }}</td>
           <hr />
-          <td id="ferramentaTable">{{ checkedFerramentas }}</td>
+          <td id="ferramentaTable">{{ checkedUsuario }}</td>
         </tr>
       </tbody>
     </table>
@@ -61,8 +47,8 @@
 
   <br /><br />
 
-  <button id="addlaudo" @click="addLaudo">Salvar Laudo</button>
-  <LaudoForm :addLaudoFunction="addLaudo" />
+  <button id="addlaudo" @click="salvarLaudo">Salvar Laudo</button>
+  
 </template>
 
 <script setup>
@@ -71,31 +57,27 @@ import axios from 'axios'
 import { ref } from 'vue'
 
 const servicoss = ref([])
-const ferramentass = ref([])
-const selectedFerramenta = ref('')
+const usuarioss = ref([])
+const selectedUsuario = ref('')
 const selectedServico = ref('')
 const checkedServicos = ref([])
-const checkedFerramentas = ref([])
+const checkedUsuario = ref([])
 
 async function buscarServico() {
   try {
-    const response = await axios.get(
-      'https://8080-leoadlerr-backendgreatp-dxesj3nczo7.ws-us104.gitpod.io/servico'
-    )
+    const response = await axios.get('servico')
     servicoss.value = response.data
   } catch (error) {
     console.error('Error fetching servico:', error)
   }
 }
 
-async function buscarFerramenta() {
+async function buscarUsuario() {
   try {
-    const response = await axios.get(
-      'https://8080-leoadlerr-backendgreatp-dxesj3nczo7.ws-us104.gitpod.io/produto'
-    )
-    ferramentass.value = response.data
+    const response = await axios.get('usuario')
+    usuarioss.value = response.data
   } catch (error) {
-    console.error('Error fetching ferramenta:', error)
+    console.error('Error fetching servico:', error)
   }
 }
 
@@ -106,30 +88,56 @@ function addServico(servico) {
   }
 }
 
-function addFerramenta(ferramenta) {
-  if (ferramenta) {
-    checkedFerramentas.value.push(ferramenta)
-    selectedFerramenta.value = ''
+function addUsuario(usuario) {
+  if (checkedUsuario.value[0] == null) {
+    checkedUsuario.value.push(usuario)
+    selectedUsuario.value = ''
+  }else{
+    alert("Apenas um usuário por serviço!")
   }
 }
 
-let laudo = []
 
-function addLaudo() {
-  
-  laudo.push({
-    cliente: 'Jorge',
-    ferramenta: checkedFerramentas.value,
-    servico: checkedServicos.value,
-  });
+async function salvarLaudo() {
 
-  console.log(laudo);
+  let usu = {};
+  try{
+    const response = await axios.get("usuario/"+checkedUsuario.value[0]);
+    usu.value = response.data;
 
+     } catch (error) {
+      alert('Usuario inválido');
+         console.error('Usuario inválido:', error)
+    }
+
+    let serv = {};
+      try{
+    const response = await axios.get("servico/"+checkedServicos.value[0]);
+    serv.value = response.data;
+     
+    
+     } catch (error) {
+        alert('Servico inválido');
+         console.error('Servico inválido:', error)
+    }
+
+    try {
+      const response = await axios.post("atribuicao",{
+    "usuario": usu.value,
+    "servico": serv.value
+    });
+    let obj = {};
+    obj.value = response.data;
+    alert("Laudo salvo com sucesso!"+ obj);
+  } catch (error) {
+    alert('Erro ao salvar o Laudo!:');
+    console.error('Erro ao salvar o Laudo!:', error)
+  }
 }
 
 onMounted(() => {
-  buscarServico()
-  buscarFerramenta()
+  buscarServico();
+  buscarUsuario();
 })
 
 
@@ -150,7 +158,7 @@ onMounted(() => {
     align-items: center;
   }
 }
-<<<<<<< Updated upstream
+
 template {
   font-family: 'Quark';
   font-weight: 700;
@@ -199,6 +207,3 @@ button:hover {
   text-shadow: 1px black;
 }
 </style>
-=======
-</style>
->>>>>>> Stashed changes

@@ -9,7 +9,7 @@ import 'vue-class-component/hooks';
 import App from './App.vue'
 import router from './router'
 
-//axios.defaults.baseURL="https://jsonplaceholder.typicode.com/todos/"
+axios.defaults.baseURL="https://8080-leoadlerr-backendgreatp-dxesj3nczo7.ws-us104.gitpod.io/"
 
 const app = createApp(App)
 
