@@ -37,7 +37,7 @@
 
       <tbody>
         <tr>
-          <td id="servicoTable">{{ checkedServicos }}</td>
+          <td id="servicoTable">{{ checkedServico }}</td>
           <hr />
           <td id="ferramentaTable">{{ checkedUsuario }}</td>
         </tr>
@@ -60,7 +60,7 @@ const servicoss = ref([])
 const usuarioss = ref([])
 const selectedUsuario = ref('')
 const selectedServico = ref('')
-const checkedServicos = ref([])
+const checkedServico = ref([])
 const checkedUsuario = ref([])
 
 async function buscarServico() {
@@ -82,9 +82,11 @@ async function buscarUsuario() {
 }
 
 function addServico(servico) {
-  if (servico) {
-    checkedServicos.value.push(servico)
+  if (checkedServico.value[0] == null) {
+    checkedServico.value.push(servico)
     selectedServico.value = ''
+  }else{
+    alert("Apenas um servico por Laudo!")
   }
 }
 
@@ -93,7 +95,7 @@ function addUsuario(usuario) {
     checkedUsuario.value.push(usuario)
     selectedUsuario.value = ''
   }else{
-    alert("Apenas um usuário por serviço!")
+    alert("Apenas um usuário por Laudo!")
   }
 }
 
@@ -112,7 +114,7 @@ async function salvarLaudo() {
 
     let serv = {};
       try{
-    const response = await axios.get("servico/"+checkedServicos.value[0]);
+    const response = await axios.get("servico/"+checkedServico.value[0]);
     serv.value = response.data;
      
     
