@@ -1,22 +1,35 @@
 @import './base.css';
+@import url('https://fonts.cdnfonts.com/css/quark');
 /*muda a cor h1*/
-a,
-.green {
+
+
+a{
   text-decoration: none;
-  color: rgb(255, 170, 0);
-  transition: 0.4s;
-  text-shadow: 0.2px 0.2px #000000;
+  background-color: rgb(255, 187, 0);
+  color:  white;
+}
+ 
+a:hover {
+  background-color:rgb(255, 255, 255);
+  color:rgb(255, 187, 0);
+  text-decoration: none;
+} 
+a:active {
+  background-color:rgb(255, 187, 0);
+  color: rgb(255, 255, 255) !important;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
+/* a:visited  {
+  background-color:rgb(255, 187, 0);
+  color: white;
+  text-decoration: none;
+
+} */
+
 
 @media (min-width: 50%) {
   body {
-    color: #ff4d00;
+    color: #cccccc;
     min-height: 80%;
     margin: 10%;
     padding: 2rem;
@@ -25,15 +38,44 @@ a,
     background-color: rgba(255, 0, 0, 0.5);
   }
   .laudo {
-    color: rgb(255, 0, 191);
+    margin-bottom: 10px;
   }
   #app {
     display: grid;
+    margin-top: 100px;
     min-width: 80%;
     min-height: 80%;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
 
     background-color: rgba(255, 0, 0, 0.5);
     color: #00ff51;
   }
+
+  
+  header .wrapper {
+    display: inline-block;
+    /*  place-items: flex-start; */
+    /* flex-wrap: wrap; */
+  }
+
+
+}
+
+.cabecalho {
+  color: rgb(255, 255, 255);
+  font-family: 'Quark';
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  background-color:rgb(255, 187, 0);
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103), 
+  -5px 0 rgba(255, 196, 3, 0.829);
+  width: 100%;
+  
+}
+
+template {
+  margin-top: 10px;
 }

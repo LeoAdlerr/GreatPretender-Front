@@ -1,7 +1,7 @@
-<template id="laudo">
-  <div id="itensLaudo">
+<template class="laudo">
+  <div class="itensLaudo">
     <label for="selecionaServico">Serviços:</label>
-    <input id="selecionaServico" list="listaServico" type="text" v-model="selectedServico" />
+    <input class="selecionaServico" list="listaServico" type="text" v-model="selectedServico" />
     <datalist name="listaServico" id="listaServico">
       <option v-for="servico in servicoss" :key="servico.id">{{ servico.nome }}</option>
     </datalist>
@@ -111,7 +111,11 @@ onMounted(() => {
 
 <style>
 .laudo {
-  background-color: blueviolet;
+  background-color: blueviolet !important;
+}
+
+.itensLaudo{ 
+  margin-top: 5%;
 }
 @media (min-width: 80%) {
   .about {
@@ -119,5 +123,52 @@ onMounted(() => {
     display: flex;
     align-items: center;
   }
+}
+template {
+  font-family: 'Quark';
+  font-weight: 700;
+  font-style: normal;
+}
+input {
+  background-color: rgba(241, 241, 241, 0.13);
+  padding-right: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-color: aliceblue;
+  margin-left: 1%;
+  margin-right: 1%;
+  border-radius: 20px;
+
+  }
+
+button{
+
+  padding-top: .5%;
+  padding-bottom: .5%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin: .3%;
+  background-color: rgb(255, 187, 0);
+  border: 1px;
+  border-color: black;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Quark';
+  font-weight: 700;
+  font-style: normal;
+}
+
+button:hover {
+  background-color: white;
+  transition-duration: .4s;
+  color:  rgb(255, 187, 0);
+  box-shadow: 1px 1px 2px  rgb(255, 187, 0);
+  padding-top: .6%;
+  padding-bottom: .6%;
+  padding-left: 1.2%;
+  padding-right: 1.2%;
+  border-style: solid;
+  border-color:  rgb(255, 187, 0);
+  text-shadow: 1px black;
 }
 </style>

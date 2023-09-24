@@ -92,18 +92,26 @@ body {
 
   align-items: left;
   font-weight: normal;
-  background-color: rgba(231, 231, 231, 0.9);
+  background-color: rgba(231, 231, 231, 0.082);
 }
 
 /*laudo/about*/
 #app {
-  color: rgb(255, 213, 0);
-  text-shadow: 0.2px 0.2px #000000;
+  color: rgb(0, 0, 0);
+  /* text-shadow: 0.2px 0.2px #000000; */
   min-width: 80%;
   margin: 1%;
   padding: 2rem;
   align-items: left;
-  font-weight: normal;
+  font-weight: bold;
   border-radius: 15px;
-  background-color: rgb(246, 246, 247);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+  font-family: 'Quark';
+  font-weight: 700;
+  font-style: normal;
+}
+
+.itensLaudo{
+  margin-top: 10px;
 }

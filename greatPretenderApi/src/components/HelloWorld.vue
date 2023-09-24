@@ -2,11 +2,13 @@
 defineProps<{
   msg: string
 }>()
+
+
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+  <div class="cabecalho">
+    <h1>{{ msg }}</h1>
     <h3>Criar Laudo</h3>
   </div>
 </template>
@@ -23,10 +25,6 @@ h3 {
   font-size: 1.2rem;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
 
 @media (min-width: 1024px) {
   .greetings h1,

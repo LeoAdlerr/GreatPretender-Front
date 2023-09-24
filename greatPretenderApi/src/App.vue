@@ -8,11 +8,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <!--  <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
 
     <div class="wrapper">
-      <HelloWorld msg="Laudo técnico de Inspeção predial:" />
-
+      <HelloWorld msg="LAUDO DE INSPEÇÃO PREDIAL" />
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">Laudo</RouterLink>
+        <RouterLink to="/">Laudos</RouterLink>
+        <RouterLink to="/about">Cadastrar</RouterLink>
+        <RouterLink to="/teste">Sair</RouterLink>
       </nav>
     </div>
   </header>
@@ -67,19 +67,17 @@ nav a:first-of-type {
     margin: 0 2rem 0 0;
   }
 
-  header .wrapper {
-    display: inline-block;
-    /*  place-items: flex-start; */
-    flex-wrap: wrap;
-  }
 
   nav {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
 
     padding: 1rem 0;
+    padding-right: 100%;
     margin-top: 1rem;
+    border-radius: 10px;
   }
 }
 </style>
