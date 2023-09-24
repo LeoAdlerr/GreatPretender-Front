@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import axios from 'axios';
+import axios from 'axios'
 /* import Component from 'vue-class-component';
 import 'vue-class-component/hooks'; 
  */
